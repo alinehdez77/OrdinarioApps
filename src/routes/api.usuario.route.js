@@ -35,7 +35,20 @@ router.post('/registro', (req, res) => {
         res.json(doc);
     });
 });
+router.get("/getAllusers", (req, res) => {
+    Usuario.find(function (err, docs) {
+        if (err) {
+            res.status(500).json({
+                "message": "Hubo un error al ejecutar la consulta",
+                "error" : err
+            })
+            console.error(err);
+            return;
+        }
 
+        res.json(docs);
+    });
+});
 
 
 
